@@ -9,11 +9,11 @@ class hashHelpers():
 
     @staticmethod
     def pair_independent(input,range,index):
-        return ((hashHelpers.a[index]*input+hashHelpers.b[index])%hashHelpers.mod[index])%range
+        return ((hashHelpers.a[index]*input+hashHelpers.b[index])%hashHelpers.mod[-1])%range
         
     @staticmethod
     def strong_independent(input,range,index):
-        return (hashHelpers.a[index]*input+hashHelpers.b[index])%hashHelpers.mod[index]
+        return (hashHelpers.a[index]*input+hashHelpers.b[index])%hashHelpers.mod[-1]
     
     hashUsed=0
     hashCapacity=0
@@ -72,6 +72,13 @@ class hashHelpers():
             hashHelpers.findNewPrime()
         hashHelpers.mod=hashHelpers.primes[st:]
         self.hashFunc=self.hashTypes[hashType]
+
+    # 得到hash值域的方法
+    def getRange(self,range):
+        if(self.hashFunc==self.strong_independent):
+            return self.mod[-1]
+        else:
+            return range
     
     # 查找对应于hashIndex的hashValue的方法
     def hashValue(self,input,range,hashIndex):

@@ -64,7 +64,7 @@ class LSH():
 
         return [
             all,
-            self.step_taken/all,
+            float(self.step_taken/all),
             count_all,
             len(self.result_pairs),
             self.false_posi,
@@ -72,12 +72,13 @@ class LSH():
             self.correctness,
             self.recall,
             self.false_posi+self.false_nega,
-            errorfp/max(self.false_posi,1),
-            errorfn/max(self.false_nega,1),
-            self.false_posi/all,
-            self.false_nega/all,
-            probFalsePositive(self.hashNum,self.crit,self.error,self.setgroup.dis),
-            probFalseNegative(self.hashNum,self.crit,self.error,self.setgroup.dis)
+            float(errorfp/max(self.false_posi,1)),
+            float(errorfn/max(self.false_nega,1)),
+            float(self.false_posi/all),
+            float(self.false_nega/all),
+            float(probFalsePositive(self.hashNum,self.crit,self.error,self.setgroup.dis)),
+            float(probFalseNegative(self.hashNum,self.crit,self.error,self.setgroup.dis)),
+            self.hashNum
             ]
     
     # 打印评价的方法
@@ -97,7 +98,7 @@ class LSH():
             for j in range(0,len(evalist[i])):
                 if(j in choice):
                     continue
-                if(LSH.isFloat(evalist[i][j])):    
+                if(LSH.isFloat(evalist[i][j]) or str(type(evalist[i][j])).__contains__("float")):    
                     print(prec_float%evalist[i][j],end='\t')
                 else:
                     print("%d"%evalist[i][j],end='\t')
@@ -110,3 +111,5 @@ class LSH():
             return False
         else:
             return True
+
+
