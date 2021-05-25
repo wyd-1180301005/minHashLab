@@ -33,8 +33,7 @@ def chernoff(expect,delta,IsUp):
 #       [g].综上所述,Pr[pa被N个minHash估计为假阳性]小于等于Sum_i{pi*di}
 #  3.参数与返回值的说明:
 #       dis是一个储存分布大小的数组 如果dis=[0.2,0.3,0.1,0.1,0.3],则说明dis刻画了五等分[0,1]区间的分布,每个区间长度为0.2
-#       minAccuracy是所允许的最小精确度,比如当crit
-# =0.3 minAccuracy=0.0001时,将jaccard=0.2999的集对判别为满足crit的集合是合法的
+#       minAccuracy是所允许的最小精确度,比如当crit=0.3 minAccuracy=0.0001时,将jaccard=0.2999的集对判别为满足crit的集合是合法的
 #       返回的概率值是全体集对中被错误地判断为阳性(假阳性)的集对的占比--假阳性的集对/所有可能的集对
 #  4.可能出现的问题:
 #       当crit太小的情况下,直接返回0
